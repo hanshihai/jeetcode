@@ -61,3 +61,21 @@ HashMap : null object allows, non-synchronized, not thread-safe
 Executor, ExecutorService, ThreadPoolExecutor, ScheduledThreadPoolExecutor, FockJoinPool : 
 Future, FutureTask : 
 ```
+
+---------------------------------------------------------------------------------------------
+###### weak reference vs. soft reference
+
+```
+weak reference : flag the object that isn't strong enough to live within memory during GC.
+WeakReference ref = new WeakReference(obj); //create a reference that points to obj.
+
+soft reference : The system can decide the obj that only has be soft referenced to live or die based on the memory usage. the obj will be living is there is enough memory space; otherwise, it will be died. The sample for soft reference is cache objects.
+SoftReference cache = new SoftReference(cacheMap);
+```
+
+###### deep clone and shallow clone
+
+```
+deep clone : the reference object will be clone to a new instance during the main object clone.
+shallow clone: use the same reference object between new clone object with the protype object.
+```
