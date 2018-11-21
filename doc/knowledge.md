@@ -2,6 +2,12 @@
 
 ### Java
 
+###### Keywords
+
+```
+volatile : 
+transient : 
+```
 ###### java.lang
 
 ```
@@ -60,6 +66,10 @@ HashMap : null object allows, non-synchronized, not thread-safe
 ```
 Executor, ExecutorService, ThreadPoolExecutor, ScheduledThreadPoolExecutor, FockJoinPool : 
 Future, FutureTask : 
+
+Lock :
+
+synchronized : 
 ```
 
 ---------------------------------------------------------------------------------------------
