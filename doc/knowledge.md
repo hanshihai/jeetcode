@@ -8,6 +8,14 @@
 volatile : 
 transient : 
 ```
+
+###### Base
+
+```
+default digital is double : double d = 123.4; double d = 123.4; double d = 123.4f; double d = 123.4d;
+operators: a++ a-- ">" ++a --a +a -a ~ ! ">" * / % ">" + - ">" >> << >>> ">" < > <= >= instanceof ">" == != ">" & ">" ^ ">" | ">" && ">" || ">" ?: ">" = += -= *= /= %= &= ^= |= <<= >>= >>>=
+```
+
 ###### java.lang
 
 ```
