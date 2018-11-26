@@ -5,8 +5,14 @@
 ###### Keywords
 
 ```
-volatile : 
-transient : 
+volatile vs. synchronized vs. Lock : 
+volatile : to keep the value being view by the other thread. The value will be flushed to main memory from local memory. It can not keep the atomicity in some case; but it can keep visibility.
+synchronized : lock the object when trying to execute, can keep atomicity and visibility and sequence.
+Lock : It doesn't lock the whole object. It allows access at the same time in some case. Normally tryLock(); then change it; then unLock(); Also the timeout can be set when tryLobk;
+```
+
+```
+transient : it ignores the property to be serialized. the transient property will be ignored during serialized and deserialized.
 ```
 
 ###### Base
