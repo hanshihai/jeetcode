@@ -25,7 +25,7 @@ operators: a++ a-- ">" ++a --a +a -a ~ ! ">" * / % ">" + - ">" >> << >>> ">" < >
 ###### java.lang
 
 ```
-StringBuffer : thread-safe, mutalbe.
+StringBuffer : thread-safe, mutable.
 StringBuilder : mutable, no synchronization.
 ```
 
@@ -90,10 +90,10 @@ synchronized :
 ###### weak reference vs. soft reference
 
 ```
-weak reference : flag the object that isn't strong enough to live within memory during GC.
+weak reference : flag the object that isn't strong enough to live within memory during GC. It would be cleared during GC. 
 WeakReference ref = new WeakReference(obj); //create a reference that points to obj.
 
-soft reference : The system can decide the obj that only has be soft referenced to live or die based on the memory usage. the obj will be living is there is enough memory space; otherwise, it will be died. The sample for soft reference is cache objects.
+soft reference : The system can decide the obj that only has be soft referenced to live or die based on the memory usage. it would live when the memory is enough. the obj will be living is there is enough memory space; otherwise, it will be died. The sample for soft reference is cache objects.
 SoftReference cache = new SoftReference(cacheMap);
 ```
 
