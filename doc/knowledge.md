@@ -33,6 +33,23 @@ StringBuilder : mutable, no synchronization.
 ThreadLocal : provide thread-local variables. copy the value to thread-self, no share with other threads. Still in heap.
 ```
 
+```
+Thread : 
+thread.yield() : "can insert into current queue before current thread". allow the other thread to run firstly. go ahead please to the other threads with higher priority or same priority. 
+thread.sleep() : "sleep, do nothing". the thread sleeps for some time. do nothing. 
+thread.join() : "wait the thread to die". the thread will run after the joined thread is die.
+thread.interrupt() : just set flag to the target thread. target thread would be handle the flag or not. 
+					 Some interal method can handle it naturally. object.wait() and thread.sleep() can handle it immediately, then throw out InterruptedException response;
+					 java.nio class can handle it also, but throw out ClosedByInterruptException response.
+```
+
+```
+Object :
+object.wait() : wait the current thread until get the notify() or notifyAll() of current thread.
+object.notify() : notify the waitting thread to queue.
+```
+
+
 ###### java.net
 
 ```
