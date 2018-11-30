@@ -18,6 +18,13 @@ transient : it ignores the property to be serialized. the transient property wil
 ###### Base
 
 ```
+boolean, byte : 8
+char, short : 16
+int, float : 32
+long, double : 64
+```
+
+```
 default digital is double : double d = 123.4; double d = 123.4; double d = 123.4f; double d = 123.4d;
 operators: a++ a-- ">" ++a --a +a -a ~ ! ">" * / % ">" + - ">" >> << >>> ">" < > <= >= instanceof ">" == != ">" & ">" ^ ">" | ">" && ">" || ">" ?: ">" = += -= *= /= %= &= ^= |= <<= >>= >>>=
 ```
@@ -25,8 +32,8 @@ operators: a++ a-- ">" ++a --a +a -a ~ ! ">" * / % ">" + - ">" >> << >>> ">" < >
 ###### java.lang
 
 ```
-StringBuffer : thread-safe, mutable.
-StringBuilder : mutable, no synchronization.
+StringBuffer : thread-safe, mutable. default capability is 16. extend based on length * 2 + 2.
+StringBuilder : mutable, no synchronization. default capability is 16. extend based on length * 2 + 2.
 ```
 
 ```
