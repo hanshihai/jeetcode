@@ -95,8 +95,13 @@ DateTimeFormatter DateTimeFormatterBuilder :
 ###### java.util
 
 ```
-HashTabel : non-null object saves, synchronized, replaced by ConcurrentHashMap 
-HashMap : null object allows, non-synchronized, not thread-safe
+Vector : synchronized, array, capability is extended by 2n, or n+increment
+ArrayList : no-sync, capability is extended by n+n/2.
+```
+
+```
+HashTable : non-null object saves, synchronized, replaced by ConcurrentHashMap, capability increases 2n + 1. 
+HashMap : null object allows, non-synchronized, not thread-safe, capability increases 2n.
 ```
 
 ###### java.util.concurrent
