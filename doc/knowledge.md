@@ -97,6 +97,7 @@ DateTimeFormatter DateTimeFormatterBuilder :
 ```
 Vector : synchronized, array, capability is extended by 2n, or n+increment
 ArrayList : no-sync, capability is extended by n+n/2.
+Linkedlist : double-linked list. capability is extended by n+1
 ```
 
 ```
