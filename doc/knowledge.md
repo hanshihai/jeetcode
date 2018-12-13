@@ -25,6 +25,26 @@ long, double : 64
 ```
 
 ```
+		short a = 1;
+        a += 1; //true
+        a = a + 1; //compile error, should be  a = (short)(a + 1);
+
+        int i = Integer.MAX_VALUE;
+        System.out.println(i);
+        int j = i + 1;
+        System.out.println(j);
+        System.out.println("i + 1 < i : " + (j < i));
+
+        double d = Double.NaN;
+        double compare = 100d;
+        System.out.println("i > j || i <= j : " + (d > compare || d <= compare));
+
+        float f = Float.NaN;
+        float comparef = 100f;
+        System.out.println("i > j || i <= j : " + (f > comparef || f <= comparef));
+```
+
+```
 default digital is double : double d = 123.4; double d = 123.4; double d = 123.4f; double d = 123.4d;
 operators: a++ a-- ">" ++a --a +a -a ~ ! ">" * / % ">" + - ">" >> << >>> ">" < > <= >= instanceof ">" == != ">" & ">" ^ ">" | ">" && ">" || ">" ?: ">" = += -= *= /= %= &= ^= |= <<= >>= >>>=
 ```
