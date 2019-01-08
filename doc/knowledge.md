@@ -25,7 +25,7 @@ long, double : 64
 ```
 
 ```
-		short a = 1;
+        short a = 1;
         a += 1; //true
         a = a + 1; //compile error, should be  a = (short)(a + 1);
 
@@ -100,8 +100,17 @@ DateFormat, SimpleDateFormat : format date to readable string.
 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z", Locale.ENGLISH);
 String text = format.format(new Date());
 
-NumberFormat : 
-MessageFormat :
+NumberFormat : it is Not thread-safe. No Synchronization
+	NumberFormat.getInstance().format(number) 				//format number
+	NumberFormat.getCurrencyInstance().format(currency)		//format currency
+	NumberFormat.getPercentInstance().format(percent)		//format percent
+	
+	number = NumberFormat.getInstance().parse(str)			//parse string to formated number
+
+MessageFormat : no synchronization
+	String pattern  = "this is message pattern, that can show {0, date} , {0, time}, {1, number, integer}, and message {2}";
+	Object[] parameters = new Object[]{};
+	String result = new MessageFormat(pattern, Locale.US).format(parameters);
 ```
 
 
@@ -152,4 +161,34 @@ SoftReference cache = new SoftReference(cacheMap);
 ```
 deep clone : the reference object will be clone to a new instance during the main object clone.
 shallow clone: use the same reference object between new clone object with the protype object.
+```
+
+
+### Algorithms
+
+###### Sorting
+
+Quicksort > Insertsort > Selectsort > Popsort
+
+```
+Quicksort : using recursion. get a flag, then switch elements between left and right (object is the left is smaller than flag, the right is bigger than flag), then do it in the left elements and the right elements.
+time complexity: O(nlog(n))
+```
+
+```
+Insertsort : get an element (normally it's second), then find the correct place on the left arrays, then insert it; do it one by one.
+time complexity: O(N*N)
+copy complexity: O(N*N)
+```
+
+```
+Selectsort : select the min element, then swap it with the first one, then do it for the next smaller...
+time complexity : O(N*N)
+swap complexity : O(N) ?
+```
+
+```
+Popsort : compare the first element and next element, swap each other if the first is bigger, then do it bwteen the second and third...
+time complexity : O(N*N)
+swap complexity : O(N*N)
 ```
