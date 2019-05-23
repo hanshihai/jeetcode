@@ -69,6 +69,7 @@ thread.interrupt() : just set flag to the target thread. target thread would be 
 					 Some interal method can handle it naturally. object.wait() and thread.sleep() can handle it immediately, then throw out InterruptedException response;
 					 java.nio class can handle it also, but throw out ClosedByInterruptException response.
 ```
+![thread life cycle](https://github.com/hanshihai/jeetcode/blob/master/doc/thread-lifecycle.png)
 
 ```
 Object :
