@@ -151,12 +151,23 @@ HashMap : null object allows, non-synchronized, not thread-safe, capability incr
 ###### java.util.concurrent
 
 ```
-Executor, ExecutorService, ThreadPoolExecutor, ScheduledThreadPoolExecutor, FockJoinPool : 
-Future, FutureTask : 
+Executor,FockJoinPool, Future, FutureTask : 
 
-Lock :
+ExecutorService: manage the Executor termination and track the progress (Future);
+
+ScheduledExecutorService: execute periodically;
+
+ThreadPoolExecutor: impl Executor and ExecutorService interface, to provide the threadPool executor. It can block the program to use the system resources unlimitly. Also it maintains some basic statistics.
+
+* core pool size and max pool size: automatically adjust the pool size 
+
 
 synchronized : 
+lock the whole object, when make the change, then release it. so it's safe and visible for the other threads.
+
+Lock :
+no lock the whole object, using tryLock() can try to get the control about the object (the timeout setting can be set also), then unlock() to release the resources; ReadWriteLock can allow all readLock to execute in the same time without writeLock.
+
 ```
 
 ---------------------------------------------------------------------------------------------
