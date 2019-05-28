@@ -15,6 +15,14 @@ Lock : It doesn't lock the whole object. It allows access at the same time in so
 transient : it ignores the property to be serialized. the transient property will be ignored during serialized and deserialized.
 ```
 
+```
+default : the interface can define the implementation method, it must use default keyword.
+```
+
+```
+strictfp : strict float point, calculate the float and double to follow IEEE-754 spec.
+```
+
 ###### Base
 
 ```
