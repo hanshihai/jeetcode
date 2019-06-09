@@ -205,24 +205,24 @@ shallow clone: use the same reference object between new clone object with the p
 Quicksort > Insertsort > Selectsort > Popsort
 
 ```
-Quicksort : using recursion. get a flag, then switch elements between left and right (object is the left is smaller than flag, the right is bigger than flag), then do it in the left elements and the right elements.
+Quicksort (no-stable): using recursion. get a flag, then switch elements between left and right (object is the left is smaller than flag, the right is bigger than flag), then do it in the left elements and the right elements.
 time complexity: O(nlog(n))
 ```
 
 ```
-Insertsort : get an element (normally it's second), then find the correct place on the left arrays, then insert it; do it one by one.
+Insertsort (stable): get an element (normally it's second), then find the correct place on the left arrays, then insert it; do it one by one.
 time complexity: O(N*N)
 copy complexity: O(N*N)
 ```
 
 ```
-Selectsort : select the min element, then swap it with the first one, then do it for the next smaller...
+Selectsort (no-stabel, 5,8,5,3,9): select the min element, then swap it with the first one, then do it for the next smaller...
 time complexity : O(N*N)
 swap complexity : O(N) ?
 ```
 
 ```
-Popsort : compare the first element and next element, swap each other if the first is bigger, then do it bwteen the second and third...
+Popsort (stable): compare the first element and next element, swap each other if the first is bigger, then do it bwteen the second and third...
 time complexity : O(N*N)
 swap complexity : O(N*N)
 ```
