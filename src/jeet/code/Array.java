@@ -4,6 +4,43 @@ import java.util.*;
 
 public class Array {
 
+    public static int[] merge(int[] nums1, int[] nums2) {
+        int[] together = new int[nums1.length + nums2.length];
+        int i=0;
+        int j=0;
+        for(int k=0;k<together.length;k++) {
+            if(i == nums1.length) {
+                together[k] = nums2[j];
+                j++;
+                continue;
+            }
+            if(j == nums2.length) {
+                together[k] = nums1[i];
+                i++;
+                continue;
+            }
+            if(nums1[i] <= nums2[j]) {
+                together[k] = nums1[i];
+                i++;
+            }else{
+                together[k] = nums2[j];
+                j++;
+            }
+        }
+        return together;
+    }
+
+    public static double median(int[] a) {
+        int len = a.length;
+        if(len % 2 == 0) {
+            int index = len / 2;
+            return (a[index] + a[index - 1]) / 2d;
+        }else{
+            int index = len / 2;
+            return a[index];
+        }
+    }
+
     public int removeDuplicates(int[] nums) {
         int keep = 0;
         int current = 1;
@@ -109,8 +146,14 @@ public class Array {
     }
 
     public static void main(String[] args) {
-        Array array = new Array();
+        /*Array array = new Array();
         int result = array.removeOneByOne(6);
-        System.out.println(result);
+        System.out.println(result);*/
+
+        int[] a = new int[] {1, 4, 8, 15};
+        int[] b = new int[] {2, 3, 5, 6, 14};
+        int[] r = Array.merge(a, b);
+        Arrays.stream(r).forEach(k -> System.out.print(k + " "));
+        System.out.println("media :" + Array.median(r));
     }
 }
