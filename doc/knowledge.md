@@ -69,7 +69,7 @@ ThreadLocal : provide thread-local variables. copy the value to thread-self, no 
 ```
 
 ```
-Thread : 
+ThreadTest :
 thread.yield() : "can insert into current queue before current thread". allow the other thread to run firstly. go ahead please to the other threads with higher priority or same priority. 
 thread.sleep() : "sleep, do nothing". the thread sleeps for some time. do nothing. 
 thread.join() : "wait the thread to die". the thread will run after the joined thread is die.
@@ -77,8 +77,9 @@ thread.interrupt() : just set flag to the target thread. target thread would be 
 					 Some interal method can handle it naturally. object.wait() and thread.sleep() can handle it immediately, then throw out InterruptedException response;
 					 java.nio class can handle it also, but throw out ClosedByInterruptException response.
 ```
-![thread life cycle](https://github.com/hanshihai/jeetcode/blob/master/doc/thread-lifecycle.png)
+![thread methods](https://github.com/hanshihai/jeetcode/blob/master/doc/thread-actions.png)
 
+![thread life cycle](https://github.com/hanshihai/jeetcode/blob/master/doc/thread-lifecycle.png)
 ```
 Object :
 object.wait() : wait the current thread until get the notify() or notifyAll() of current thread.
