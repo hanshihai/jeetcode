@@ -80,6 +80,8 @@ thread.interrupt() : just set flag to the target thread. target thread would be 
 ![thread methods](https://github.com/hanshihai/jeetcode/blob/master/doc/thread-actions.png)
 
 ![thread life cycle](https://github.com/hanshihai/jeetcode/blob/master/doc/thread-lifecycle.png)
+
+![thread state](https://github.com/hanshihai/jeetcode/blob/master/doc/thread-state.png)
 ```
 Object :
 object.wait() : wait the current thread until get the notify() or notifyAll() of current thread.
