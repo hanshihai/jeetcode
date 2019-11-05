@@ -151,13 +151,13 @@ ZonedDateTime time = ZonedDateTime.parse(datetimeString,
 
 ```
 Vector : synchronized, array, capability is extended by 2n, or n+increment
-ArrayList : no-sync, capability is extended by n+n/2.
-Linkedlist : double-linked list. capability is extended by n+1
+ArrayList : no-sync, the new capability is extended to n+n/2 : (int newCapacity = oldCapacity + (oldCapacity >> 1)).
+Linkedlist : double-linked list. capability is extended to n+1 : (size++; modCount++)
 ```
 
 ```
-HashTable : non-null object saves, synchronized, replaced by ConcurrentHashMap, capability increases 2n + 1. 
-HashMap : null object allows, non-synchronized, not thread-safe, capability increases 2n.
+HashTable : non-null object saves, synchronized, replaced by ConcurrentHashMap, capability increases to 2n + 1 (int newCapacity = (oldCapacity << 1) + 1;). 
+HashMap : null object allows, non-synchronized, not thread-safe, capability increases 2n (newThr = oldThr << 1;).
 ```
 
 ###### java.util.concurrent
