@@ -145,15 +145,106 @@ public class Array {
         return nums.get(0);
     }
 
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i=0;i<nums.length-2;i++) {
+            for(int j=i+1;j<nums.length-1;j++){
+                for(int k=j+1;k<nums.length;k++) {
+                    boolean duplicated = false;
+                    int[] temp = new int[] {nums[i],nums[j],nums[k]};
+                    if(nums[i] + nums[j] + nums[k] == 0) {
+                        Arrays.sort(temp);
+                        for(List<Integer> e : result) {
+                            if(e.get(0) == temp[0] && e.get(1) == temp[1] && e.get(2) == temp[2]) {
+                                duplicated = true;
+                            }
+                        }
+                        if(duplicated) {
+                            continue;
+                        }
+                        List<Integer> lists = new ArrayList<>();
+                        for(int ti=0;ti<temp.length;ti++) {
+                            lists.add(temp[ti]);
+                        }
+                        result.add(lists);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    public boolean isPalindrome(int x) {
+        if(x < 0) {
+            return false;
+        }
+        if(x == 0) {
+            return true;
+        }
+        StringBuilder buffer = new StringBuilder();
+        int newValue = 0;
+        try {
+            newValue = Integer.valueOf(buffer.append(x).reverse().toString());
+        }catch(Exception e) {
+            return false;
+        }
+        return newValue == x;
+    }
+
+    public double myPow(double x, int n) {
+        if(x == 0 || x == 1) {
+            return x;
+        }
+        if(x == -1) {
+            int single = n % 2;
+            if(single == 0) {
+                return 1;
+            }else{
+                return x;
+            }
+        }
+        if(n == 0) {
+            return 1;
+        }
+        if(n == 1) {
+            return x;
+        }
+        long maxN = n;
+        if(maxN <= Integer.MIN_VALUE || maxN >= Integer.MAX_VALUE) {
+            return 0;
+        }
+        if(n < 0) {
+            n = -n;
+            x = 1 / x;
+        }
+        int single = n % 2;
+        int sqort = n / 2;
+        if(sqort == 1) {
+            double result = x * x;
+            if(single != 0) {
+                return result * x;
+            }
+            return result;
+        }else{
+            if(single != 0) {
+                return myPow(x*x, sqort) * x;
+            }
+            return myPow(x*x, sqort);
+        }
+    }
+
     public static void main(String[] args) {
         /*Array array = new Array();
         int result = array.removeOneByOne(6);
         System.out.println(result);*/
 
-        int[] a = new int[] {1, 4, 8, 15};
+        int[] threeSum = new int[] {-1, 0, 1, 2, -1, -4};
+        System.out.println("sum: " + Array.threeSum(threeSum));
+
+       /* int[] a = new int[] {1, 4, 8, 15};
         int[] b = new int[] {2, 3, 5, 6, 14};
         int[] r = Array.merge(a, b);
         Arrays.stream(r).forEach(k -> System.out.print(k + " "));
-        System.out.println("media :" + Array.median(r));
+        System.out.println("media :" + Array.median(r));*/
     }
 }
