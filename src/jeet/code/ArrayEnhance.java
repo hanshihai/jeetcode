@@ -97,12 +97,87 @@ public class ArrayEnhance {
             return aaa;
         }
 
+        private static boolean isBack(int i, int j, int lastI, int lastJ) {
+            if(i == lastI && j == lastJ) {
+                return true;
+            }
+            return false;
+        }
+
+        private static boolean checkExist(char[][] board, String word, int indexStr, int i, int j, int lastI, int lastJ) {
+            if (indexStr == word.length()) {
+                return true;
+            }
+            boolean result = false;
+            if (i-1 >= 0 && board[i-1][j] == word.charAt(indexStr) && !isBack(i-1, j, lastI, lastJ)) {
+                result = checkExist(board, word, indexStr + 1, i-1, j, i, j);
+                if (result) {
+                    return true;
+                }
+            }
+            if (i+1 < board.length && board[i+1][j] == word.charAt(indexStr) && !isBack(i+1, j, lastI, lastJ)) {
+                result = checkExist(board, word, indexStr + 1, i+1, j, i, j);
+                if (result) {
+                    return true;
+                }
+            }
+            if (j-1 >= 0 && board[i][j-1] == word.charAt(indexStr) && !isBack(i, j-1, lastI, lastJ)) {
+                result = checkExist(board, word, indexStr + 1, i, j-1, i, j);
+                if (result) {
+                    return true;
+                }
+            }
+            if (j+1 < board[0].length && board[i][j+1] == word.charAt(indexStr) && !isBack(i, j+1, lastI, lastJ)) {
+                result = checkExist(board, word, indexStr + 1, i, j+1, i, j);
+                if (result) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    public static boolean exist(char[][] board, String word) {
+        if(word == null || word.trim().length() < 1
+            || board == null || board.length < 1 || board[0] == null || board[0].length < 1) {
+            return false;
+        }
+        int length = board.length;
+        int width = board[0].length;
+
+        if (word.length() > length * width) {
+            return false;
+        }
+        for(int i=0;i<length;i++) {
+            for(int j=0;j<width;j++) {
+                if (board[i][j] == word.charAt(0)) {
+                    boolean checked = checkExist(board, word, 1, i, j, -1, -1);
+                    if (checked) {
+                        return true;
+                    } else {
+                        continue;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
+        /*char[] cha = new char[] {'a','b','c','e'};
+        char[] chb = new char[] {'s','f','c','s'};
+        char[] chc = new char[] {'a','d','e','e'};
+        char[][] board = new char[][] {cha, chb, chc};
+
+        System.out.println(exist(board, "see"));*/
+
+        char[][] oneBoard = new char[][] {{'a','b'}};
+        System.out.print(exist(oneBoard, "ba"));
+
         /*int[] threeSum = new int[] {-1, 0, 1, 2, -1, -4};
         System.out.println(ArrayEnhance.threeSum(threeSum));*/
-        String str[] = new String[] {" 42", "4392 aaaa", "words and 1234","-91283472332"};
+        /*String str[] = new String[] {" 42", "4392 aaaa", "words and 1234","-91283472332"};
         for(String s : str) {
             System.out.println(myAtoi(s));
-        }
+        }*/
     }
 }
