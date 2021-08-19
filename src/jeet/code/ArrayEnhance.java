@@ -97,38 +97,47 @@ public class ArrayEnhance {
             return aaa;
         }
 
-        private static boolean isBack(int i, int j, int lastI, int lastJ) {
-            if(i == lastI && j == lastJ) {
-                return true;
-            }
-            return false;
+        private static boolean isBack(int i, int j, List<String> passed) {
+            return passed.contains(i+"-"+j);
         }
 
-        private static boolean checkExist(char[][] board, String word, int indexStr, int i, int j, int lastI, int lastJ) {
+        private static boolean checkExist(char[][] board, String word, int indexStr, int i, int j, List<String> passed) {
             if (indexStr == word.length()) {
                 return true;
             }
             boolean result = false;
-            if (i-1 >= 0 && board[i-1][j] == word.charAt(indexStr) && !isBack(i-1, j, lastI, lastJ)) {
-                result = checkExist(board, word, indexStr + 1, i-1, j, i, j);
+            if (i-1 >= 0 && board[i-1][j] == word.charAt(indexStr) && !isBack(i-1, j, passed)) {
+                List<String> subPassed = new ArrayList<>();
+                subPassed.addAll(passed);
+                subPassed.add(String.valueOf(i-1)+"-"+j);
+                result = checkExist(board, word, indexStr + 1, i-1, j, subPassed);
                 if (result) {
                     return true;
                 }
             }
-            if (i+1 < board.length && board[i+1][j] == word.charAt(indexStr) && !isBack(i+1, j, lastI, lastJ)) {
-                result = checkExist(board, word, indexStr + 1, i+1, j, i, j);
+            if (i+1 < board.length && board[i+1][j] == word.charAt(indexStr) && !isBack(i+1, j, passed)) {
+                List<String> subPassed = new ArrayList<>();
+                subPassed.addAll(passed);
+                subPassed.add(String.valueOf(i+1)+"-"+j);
+                result = checkExist(board, word, indexStr + 1, i+1, j, subPassed);
                 if (result) {
                     return true;
                 }
             }
-            if (j-1 >= 0 && board[i][j-1] == word.charAt(indexStr) && !isBack(i, j-1, lastI, lastJ)) {
-                result = checkExist(board, word, indexStr + 1, i, j-1, i, j);
+            if (j-1 >= 0 && board[i][j-1] == word.charAt(indexStr) && !isBack(i, j-1, passed)) {
+                List<String> subPassed = new ArrayList<>();
+                subPassed.addAll(passed);
+                subPassed.add(i+"-"+String.valueOf(j-1));
+                result = checkExist(board, word, indexStr + 1, i, j-1, subPassed);
                 if (result) {
                     return true;
                 }
             }
-            if (j+1 < board[0].length && board[i][j+1] == word.charAt(indexStr) && !isBack(i, j+1, lastI, lastJ)) {
-                result = checkExist(board, word, indexStr + 1, i, j+1, i, j);
+            if (j+1 < board[0].length && board[i][j+1] == word.charAt(indexStr) && !isBack(i, j+1, passed)) {
+                List<String> subPassed = new ArrayList<>();
+                subPassed.addAll(passed);
+                subPassed.add(i+"-"+String.valueOf(j+1));
+                result = checkExist(board, word, indexStr + 1, i, j+1, subPassed);
                 if (result) {
                     return true;
                 }
@@ -147,10 +156,13 @@ public class ArrayEnhance {
         if (word.length() > length * width) {
             return false;
         }
+
         for(int i=0;i<length;i++) {
             for(int j=0;j<width;j++) {
                 if (board[i][j] == word.charAt(0)) {
-                    boolean checked = checkExist(board, word, 1, i, j, -1, -1);
+                    List<String> passed = new ArrayList<>();
+                    passed.add(i+"-"+j);
+                    boolean checked = checkExist(board, word, 1, i, j, passed);
                     if (checked) {
                         return true;
                     } else {
@@ -163,6 +175,10 @@ public class ArrayEnhance {
     }
 
     public static void main(String[] args) {
+
+        char[][] board = new char[][] {{'c','a','a'},{'a','a','a'},{'b','c','d'}};
+        System.out.println(exist(board, "aab"));
+
         /*char[] cha = new char[] {'a','b','c','e'};
         char[] chb = new char[] {'s','f','c','s'};
         char[] chc = new char[] {'a','d','e','e'};
@@ -170,8 +186,9 @@ public class ArrayEnhance {
 
         System.out.println(exist(board, "see"));*/
 
-        char[][] oneBoard = new char[][] {{'a','b'}};
-        System.out.print(exist(oneBoard, "ba"));
+        /*char[][] oneBoard = new char[][] {{'a','a','b','a','a','b'},{'a','a','b','b','b','a'},{'a','a','a','a','b','a'},{'b','a','b','b','a','b'},{'a','b','b','a','b','a'},{'b','a','a','a','a','b'}};
+
+        System.out.print(exist(oneBoard, "bbbaabbbbbab"));*/
 
         /*int[] threeSum = new int[] {-1, 0, 1, 2, -1, -4};
         System.out.println(ArrayEnhance.threeSum(threeSum));*/
