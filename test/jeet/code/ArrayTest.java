@@ -8,7 +8,7 @@ import static org.hamcrest.core.Is.is;
 /**
  * Created by hans on 3/21/2018.
  */
-public class TestArray {
+public class ArrayTest {
 
     @Test
     public void testRemoveDuplicates() {

@@ -21,6 +21,8 @@ public class DoubleTree {
     public class Node {
         int val;
         boolean isLeave = false;
+        boolean hasleft = false;
+        boolean hasRight = false;
 
         public int getVal() {
             return val;
@@ -38,6 +40,22 @@ public class DoubleTree {
             isLeave = leave;
         }
 
+        public boolean isHasleft() {
+            return hasleft;
+        }
+
+        public void setHasleft(boolean hasleft) {
+            this.hasleft = hasleft;
+        }
+
+        public boolean isHasRight() {
+            return hasRight;
+        }
+
+        public void setHasRight(boolean hasRight) {
+            this.hasRight = hasRight;
+        }
+
         public Node(int val, boolean leave) {
             this.val = val;
             this.isLeave = leave;
@@ -45,7 +63,7 @@ public class DoubleTree {
 
         public boolean equals(Node a) {
             if (a == null) {return false;}
-            return (val == a.val && isLeave == a.isLeave);
+            return (val == a.val && hasleft == a.hasleft && hasRight == a.hasRight);
         }
 
     }
@@ -53,11 +71,14 @@ public class DoubleTree {
     public void deep(TreeNode root, List<Node> result) {
         if (root != null) {
             if (root.left != null || root.right != null) {
-                result.add(new Node(root.val, false));
+                Node rootNode = new Node(root.val, false);
+                result.add(rootNode);
                 if (root.left != null) {
+                    rootNode.setHasleft(true);
                     deep(root.left, result);
                 }
                 if (root.right != null) {
+                    rootNode.setHasRight(true);
                     deep(root.right, result);
                 }
             } else {
@@ -68,7 +89,6 @@ public class DoubleTree {
 
     public boolean check(List<Node> root, List<Node> sub, int start) {
         for(int i=start,j=0;j<sub.size();i++,j++) {
-            System.out.println(i + " - " + j);
             if (!root.get(i).equals(sub.get(j))) {return false;}
         }
         return true;
@@ -112,11 +132,12 @@ public class DoubleTree {
         DoubleTree.TreeNode sub2 = new DoubleTree().new TreeNode(2);
         DoubleTree.TreeNode subTree = new DoubleTree().new TreeNode(4, left2, sub2);
 
+        DoubleTree.TreeNode subTree2 = new DoubleTree().new TreeNode(4, left2, null);
         /*List<Node> result = new ArrayList<>();
         new DoubleTree().deep(subTree, result);
         result.forEach(n -> System.out.println(n.getVal() + " | " + n.isLeave()));*/
 
-        boolean checked = new DoubleTree().isSubtree(left2, left2);
+        boolean checked = new DoubleTree().isSubtree(subTree, subTree2);
         System.out.println("ccc : " + checked);
     }
 }
