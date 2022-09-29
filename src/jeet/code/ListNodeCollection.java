@@ -10,6 +10,36 @@ public class ListNodeCollection {
        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
    }
 
+   public static ListNode min(ListNode node) {
+        if(null == node) {
+            return node;
+        }
+        ListNode result = node;
+        ListNode current = result.next;
+        while(current != null) {
+            if (result.val > current.val) {
+                result = current;
+            }
+            current = current.next;
+        }
+        return result;
+   }
+
+   public static ListNode sort(ListNode node) {
+        ListNode min = min(node);
+        ListNode current = node;
+        while (null != min) {
+            if (current.val > min.val) {
+                int temp = current.val;
+                current.val = min.val;
+                min.val = temp;
+            }
+            current = current.next;
+            min = min(current);
+        }
+        return node;
+   }
+
    public static ListNode merge(ListNode list1, ListNode list2) {
         ListNode result = null;
         ListNode current = null;

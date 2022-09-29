@@ -8,6 +8,48 @@ import jeet.code.ListNodeCollection.*;
 public class ListNodeCollectionTest {
 
     @Test
+    public void testMin() {
+        int[] values = new int[] {8, -4, -9, 3, 10};
+        ListNode data = null;
+        ListNode current = null;
+        for(int i=0;i<values.length;i++) {
+            ListNode node = new ListNodeCollection().new ListNode(values[i]);
+            if (data == null) {
+                data = node;
+            }
+            if (current != null) {
+                current.next = node;
+                current = node;
+            } else {
+                current = node;
+            }
+        }
+        ListNode result = ListNodeCollection.min(data);
+        assertThat(true, is(-9 == result.val));
+    }
+
+    @Test
+    public void testSort() {
+        int[] values = new int[] {8, -4, -9, 3, 10};
+        ListNode data = null;
+        ListNode current = null;
+        for(int i=0;i<values.length;i++) {
+            ListNode node = new ListNodeCollection().new ListNode(values[i]);
+            if (data == null) {
+                data = node;
+            }
+            if (current != null) {
+                current.next = node;
+                current = node;
+            } else {
+                current = node;
+            }
+        }
+        ListNodeCollection.sort(data);
+        assertThat(true, is(-4 == data.next.val));
+    }
+
+    @Test
     public void testMerge_empty() {
         ListNodeCollection.ListNode nodeA = null;
         ListNodeCollection.ListNode nodeB = null;
