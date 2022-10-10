@@ -29,6 +29,17 @@ public class WordBreakTest {
     }
 
     @Test
+    public void testWordBreak_Stingy() {
+        String s = "abcd";
+        List<String> wordDict = new ArrayList<>();
+        wordDict.add("a");
+        wordDict.add("abc");
+        wordDict.add("b");
+        wordDict.add("cd");
+        assertThat(true, is(WordBreak.wordBreak(s, wordDict)));
+    }
+
+    @Test
     public void testWordBreak_False() {
         String s = "catsandog";
         List<String> wordDict = new ArrayList<>();
