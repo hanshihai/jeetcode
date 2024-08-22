@@ -10,6 +10,25 @@ public class ListNodeCollection {
        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
    }
 
+    public static ListNode swapPairs(ListNode head) {
+        if (null == head || null == head.next) {
+            return head;
+        }
+        int i = 0;
+        ListNode current = head;
+        while(current.next != null) {
+            if ( i % 2 == 0) {
+                int thisNodeVal = current.val;
+                int nextNodeVal = current.next.val;
+                current.val = nextNodeVal;
+                current.next.val = thisNodeVal;
+            }
+            current = current.next;
+            i++;
+        }
+        return head;
+    }
+    
    public static ListNode min(ListNode node) {
         if(null == node) {
             return node;
